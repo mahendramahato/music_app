@@ -1,0 +1,245 @@
+h1{
+  border-bottom: 6px solid;
+}
+h1 span{
+  position: relative;
+  display: inline-block;
+  animation: animate 1.5s linear infinite;
+  padding-right: 3px;
+}
+h1 span::before
+{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  width: 94%;
+  background: aliceblue;
+  animation: spanBorder 1.5s linear infinite;
+}
+h1 span:nth-child(1),
+h1 span:nth-child(1)::before
+{
+  animation-delay: 0s;
+}
+h1 span:nth-child(2),
+h1 span:nth-child(2)::before
+{
+  animation-delay: 0.2s;
+}
+h1 span:nth-child(3),
+h1 span:nth-child(3)::before
+{
+  animation-delay: 0.4s;
+}
+h1 span:nth-child(4),
+h1 span:nth-child(4)::before
+{
+  animation-delay: 0.6s;
+}
+h1 span:nth-child(5),
+h1 span:nth-child(5)::before
+{
+  animation-delay: 0.8s;
+}
+h1 span:nth-child(6),
+h1 span:nth-child(6)::before
+{
+  animation-delay: 1.0s;
+}
+h1 span:nth-child(7),
+h1 span:nth-child(7)::before
+{
+  animation-delay: 1.2s;
+}
+h1 span:nth-child(8),
+h1 span:nth-child(8)::before
+{
+  animation-delay: 1.4s;
+}
+h1 span:nth-child(9),
+h1 span:nth-child(9)::before
+{
+  animation-delay: 1.6s;
+}
+h1 span:nth-child(10),
+h1 span:nth-child(10)::before
+{
+  animation-delay: 1.8s;
+}
+h1 span:nth-child(11),
+h1 span:nth-child(11)::before
+{
+  animation-delay: 2.0s;
+}
+h1 span:nth-child(12),
+h1 span:nth-child(12)::before
+{
+  animation-delay: 2.2s;
+}
+h1 span:nth-child(13),
+h1 span:nth-child(13)::before
+{
+  animation-delay: 2.4s;
+}
+h1 span:nth-child(14),
+h1 span:nth-child(14)::before
+{
+  animation-delay: 2.6s;
+}
+
+@keyframes animate{
+  0%{
+    transform: translateY(0px);
+  }
+  10%{
+    transform: translateY(-30px);
+  }
+  15%{
+    transform: translateY(0px);
+  }
+  25%{
+    transform: translateY(-20px);
+  }
+  30%{
+    transform: translateY(0px);
+  }
+  40%{
+    transform: translateY(-10px);
+  }
+  45%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+@keyframes spanBorder{
+  0%{
+    bottom: 0;
+    height: 4px;
+  }
+  10%{
+    bottom: 0;
+    height: 34px;
+  }
+  15%{
+    bottom: 0;
+    height: 4px;
+  }
+  25%{
+    bottom: -20px;
+    height: 24px;
+  }
+  30%{
+    bottom: 0;
+    height: 4px;
+  }
+  40%{
+    bottom: -10px;
+    height: 14px;
+  }
+  45%{
+    bottom: 0;
+    height: 4px;
+  }
+  100%{
+    bottom: 0;
+    height: 4px;
+  }
+}
+
+
+/* fade in fade out image */
+
+.fadeinout
+{
+  animation: fadeinout 6s infinite;
+}
+
+@keyframes fadeinout
+{
+  0%{
+    opacity:0;
+  }
+  50%
+  {
+    opacity:1;
+  }
+  100%
+  {
+    opacity:0;
+  }
+}
+
+
+/* searchbar css */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* cd spin */
+.cd{
+  width: 100px;
+  height: 100px;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
