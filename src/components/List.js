@@ -1,28 +1,44 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation, Link } from 'react-router-dom';
+import { getAllSongs } from '../api';
 
-export const List = ({song}) => {
-  return (
-    <div className="row justify-content-center">
-        <div className="col">
-            <div className="card shadow" style={{ paddingTop: 30, paddingLeft: 20, paddingRight: 20, marginTop: 50 }}>
+export const List = () => {
+
+    const location = useLocation()
+    const [song, setSong] = useState([])
+    
+    const getlist = location.state
+
+    useEffect(() => {
+        // console.log(location)
+
+        getAllSongs(getlist).then((data) => {
+            console.log(data)
+            setSong(data)
+            
+        }).catch(error =>{
+            console.log(error)
+        })
+    }, [])
+    
+
+    return (
+
+        <div className="container-fluid" style={{marginBottom: 20}}>
+            <div className="card shadow" style={{ paddingTop: 30, paddingLeft: 20, paddingRight: 20, marginTop: 20 }}>
                 <div className="row" style={{ paddingBottom: '20px' }}>
-                    <div className="col-md-3">
-                        <img src="/images/song.png" className="card-img" alt="..." style={{ width: 50, height: 50 }} />
-                    </div>
-                    <div className="col-md-9">
-                        <h3 style={{ paddingTop: 6 }}>Song Lists</h3>
-                    </div>
+                    <h4>Songs</h4>
                 </div>
             </div>
 
-            <div className="card shadow" style={{ marginTop: 4 }}>
-                <table className=" align-middle mb-0 bg-white" style={{ borderRadius: 10 }}>
+            <div className="card shadow" style={{ marginTop: 8, marginBottom: '4px' }}>
+                <table className=" align-middle mb-3 mt-3 bg-white" style={{ borderRadius: 10 }}>
                     <thead className="bg-light">
                         <tr>
                             <th style={{ paddingLeft: '10%' }}>Title</th>
                             <th>Artist</th>
-                            <th>Time</th>
-                            <th style={{ paddingLeft: '10%' }}>Album</th>
+                            <th>Duration</th>
+                            <th>Album</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,11 +46,11 @@ export const List = ({song}) => {
                             song?.map((sng, i)=>(
                             <tr key={i}>
                             <td>
-                                <div className="d-flex align-items-center">
+                                <div className="d-flex align-items-center" style={{paddingLeft: '10%'}}>
                                     <img
                                         src={sng.thumbnail}
                                         alt=""
-                                        style={{ width: '45px', height: '45px' }}
+                                        style={{ width: '50px', height: '50px' }}
                                         className="rounded-circle"
                                     />
                                     <div className="ms-3">
@@ -44,12 +60,19 @@ export const List = ({song}) => {
                                 </div>
                             </td>
                             <td>
-                                <p className="fw-normal mb-1">{sng.artists[0].name}</p>
+                                {sng?.artists.map((items)=>(     
+                                <Link to="/artist_details" state={items.artist_id}><p className="fw-normal mb-1 text-dark">
+                                    {items.name}
+                                </p>
+                                </Link>
+                                ))}
+                                {/* {sng.artists[0].name} {sng.artists[0].artist_id} */}
                             </td>
                             <td>
                                 <span className="badge badge-success rounded-pill d-inline">{sng.duration / 100}</span>
                             </td>
-                            <td style={{ paddingLeft: '10%' }}>{sng.album.name}</td>
+                            
+                            <td><Link to="/album_details" state={sng.album.album_id}>{sng.album.name}</Link></td>
                             </tr>
                             ))
                         }
@@ -58,8 +81,9 @@ export const List = ({song}) => {
             </div>
 
         </div>
-    </div>
-  )
+
+
+    )
 }
 
 export default List

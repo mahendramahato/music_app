@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
     return (
         <nav className="navbar navbar-dark" style={{background: '#e91e63'}}>
         <div className="container-fluid text-white">
             <div>
-            <img style={{width: '20%'}} src="./images/detective.png" alt="detective"/>
+                <Link to="/home">
+                    <img style={{width: '20%'}} src="./images/detective.png" alt="detective"/>
+                </Link>
             </div>
 
             <div>

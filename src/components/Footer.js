@@ -3,7 +3,7 @@ import React from 'react'
 export const Footer = () => {
   return (
     <div>
-        <footer className=" text-white" style={{background: '#e91e63', marginTop: '50px', marginBottom: 'auto'}}>
+        <footer className="bottom text-white" style={{background: '#e91e63'}}>
 
 
         <div className="footer-copyright text-center py-3">© 2022 Copyright:
